@@ -1,0 +1,261 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Portfolio Abhi</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	
+		<script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+		<script src="AdvertisementBistro_HTML5 Canvas.js"></script>
+		<script>
+		var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
+		function init() {
+			canvas = document.getElementById("canvas");
+			anim_container = document.getElementById("animation_container");
+			dom_overlay_container = document.getElementById("dom_overlay_container");
+			var comp=AdobeAn.getComposition("0B442EDE81F4AF40A54BC85984F6227F");
+			var lib=comp.getLibrary();
+			var loader = new createjs.LoadQueue(false);
+			loader.addEventListener("fileload", function(evt){handleFileLoad(evt,comp)});
+			loader.addEventListener("complete", function(evt){handleComplete(evt,comp)});
+			var lib=comp.getLibrary();
+			loader.loadManifest(lib.properties.manifest);
+		}
+		function handleFileLoad(evt, comp) {
+			var images=comp.getImages();	
+			if (evt && (evt.item.type == "image")) { images[evt.item.id] = evt.result; }	
+		}
+		function handleComplete(evt,comp) {
+			//This function is always called, irrespective of the content. You can use the variable "stage" after it is created in token create_stage.
+			var lib=comp.getLibrary();
+			var ss=comp.getSpriteSheet();
+			var queue = evt.target;
+			var ssMetadata = lib.ssMetadata;
+			for(i=0; i<ssMetadata.length; i++) {
+				ss[ssMetadata[i].name] = new createjs.SpriteSheet( {"images": [queue.getResult(ssMetadata[i].name)], "frames": ssMetadata[i].frames} )
+			}
+			exportRoot = new lib.AdvertisementBistro_HTML5Canvas();
+			stage = new lib.Stage(canvas);
+			stage.enableMouseOver();	
+			//Registers the "tick" event listener.
+			fnStartAnimation = function() {
+				stage.addChild(exportRoot);
+				createjs.Ticker.framerate = lib.properties.fps;
+				createjs.Ticker.addEventListener("tick", stage);
+			}	    
+			//Code to support hidpi screens and responsive scaling.
+			AdobeAn.makeResponsive(false,'both',false,1,[canvas,anim_container,dom_overlay_container]);	
+			AdobeAn.compositionLoaded(lib.properties.id);
+			fnStartAnimation();
+		}
+		</script></head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="index.html" class="logo">
+									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Abhi J</span>
+								</a>
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Projects</h2>
+						<ul>
+							<li><a href="https://josyulaa24.github.io/WhiteGooseBistro/"> White Goose Bistro </a></li>
+							<li><a href="https://josyulaa24.github.io/Cities/"> Cities </a></li>
+							<li><a href="https://josyulaa24.github.io/WHS/"> WHS Page Redo</a></li>
+							<li><a href="https://scratch.mit.edu/projects/853966221/">Action Game</a></li>
+							<li><a href="https://scratch.mit.edu/projects/734963132/">Wii Adventure Game</a></li>
+							<li><a href="https://scratch.mit.edu/projects/645089369/fullscreen/">Minigame Project</a></li>
+							<li><a href="https://josyulaa24.github.io/W3CSS/">W3 Pear Technology</a></li>
+
+						</ul>
+
+						<h2>About Me</h2>
+						<ul>
+							<li><a href="aboutme.html"> About Me</a></li>
+						</ul>
+
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<header>
+								<h1>Portfolio Of My Best Projects<br> </h1>
+							</header>
+
+							<header>
+								<h2>Web Design Projects<br> </h2>
+							</header>
+
+
+							<section class="tiles">
+								<article class="style1">
+									<span class="image">
+										<img src="images/Creative3.png" alt="" />
+									</span>
+									<a href="https://josyulaa24.github.io/WhiteGooseBistro/">
+										<h2>White Goose Bistro </h2>
+										<div class="content">
+											<p>A website of a restaraunt that I made up called "White Goose Bistro" </p>
+										</div>
+									</a>
+								</article>
+								<article class="style2">
+									<span class="image">
+										<img src="images/Cities2.png" alt="" />
+									</span>
+									<a href="https://josyulaa24.github.io/Cities/">
+										<h2> Cities Project </h2>
+										<div class="content">
+											<p>I made a website about the best cities to visit</p>
+										</div>
+									</a>
+								</article>
+								<article class="style3">
+									<span class="image">
+										<img src="images/WHS.png" alt="" />
+									</span>
+									<a href="https://josyulaa24.github.io/WHS/">
+										<h2>WHS Page Redo</h2>
+										<div class="content">
+											<p> I redid the foreign language page of the WHS website</p>
+										</div>
+									</a>
+									
+								</article>
+								<article class="style4">
+									<span class="image">
+										<img src="images/PearTechnology.png" alt="" />
+									</span>
+									<a href="https://josyulaa24.github.io/W3CSS/">
+										<h2>W3 PearTechnology</h2>
+										<div class="content">
+											<p> I used one of the W3 templates to generate a technology website</p>
+										</div>
+									</a>
+									
+								</article>
+								<article class="style5">
+									<span class="image">
+										<img src="images/AdvertisementThumbnail.png" alt="" />
+									</span>
+									<a href="AdvertisementBistro_HTML5 Canvas.html">
+										<h2>White Goose Bistro Ad</h2>
+										<div class="content">
+											<p> Advertisement of White Goose Bistro </p>
+										</div>
+									</a>
+									
+								</article>
+
+							</section>
+							<br> 
+								<header>
+									<h2>Computer Programming Projects </h2>
+								</header>
+								<section class="tiles">
+
+								<article class="style7">
+								
+									<span class="image">
+										<img src="images/FinalScratch.png" alt="" />
+									</span>
+									<a href="https://scratch.mit.edu/projects/853966221/">
+										<h2> Action Game </h2>
+										<div class="content">
+											<p> This is a project I made for my final project in computer programming. It is an action fighting game that has minigames.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style8">
+									<span class="image">
+										<img src="images/Wii Adventure Game.png" alt="" />
+									</span>
+									<a href="https://scratch.mit.edu/projects/734963132/">
+										<h2>Wii Adventure Game</h2>
+										<div class="content">
+											<p>I made a wii adventure game where you scroll through with your own mii character</p>
+										</div>
+									</a>
+								</article>
+								<article class="style9">
+									<span class="image">
+										<img src="images/FinalProjectCS.png" alt="" />
+									</span>
+									<a href="https://scratch.mit.edu/projects/645089369/fullscreen/">
+										<h2> Minigame Plaza </h2>
+										<div class="content">
+											<p> It is a series of minigames that you can play</p>
+										</div>
+									</a>
+								</article>
+								
+							</section>
+						</div>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<section>
+								<h2>Get in touch</h2>
+								<form method="post" action="#">
+									<div class="fields">
+										<div class="field half">
+											<input type="text" name="name" id="name" placeholder="Name" />
+										</div>
+										<div class="field half">
+											<input type="email" name="email" id="email" placeholder="Email" />
+										</div>
+										<div class="field">
+											<textarea name="message" id="message" placeholder="Message"></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send" class="primary" /></li>
+									</ul>
+								</form>
+							</section>
+							
+							<ul class="copyright">
+								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+								<li> Walpole High School Abhi Web Design 2024</li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
